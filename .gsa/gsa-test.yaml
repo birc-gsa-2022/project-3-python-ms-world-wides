@@ -1,0 +1,20 @@
+tools:
+  GSA-Naive:
+    map: "gsa search {genome} {reads} -o {outfile} exact naive"
+  GSA-Border:
+    map: "gsa search {genome} {reads} -o {outfile} exact border"
+  GSA-KMP:
+    map: "gsa search {genome} {reads} -o {outfile} exact kmp"
+  sa:
+    map: "{root}/../sa {genome} {reads} > {outfile}"
+
+reference-tool: GSA-Naive
+
+genomes:
+  length: [100, 500, 1000]
+  chromosomes: 10
+
+reads:
+  number: 10
+  length: [10, 50]
+  edits: 0
