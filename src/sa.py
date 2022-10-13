@@ -103,19 +103,18 @@ def array_runner(fasta_dict, fastq_dict):
 
 def main():
     
-#     argparser = argparse.ArgumentParser(
-#         description="Exact matching in linear time")
-#     argparser.add_argument("genome", type=argparse.FileType('r'))
-#     argparser.add_argument("reads", type=argparse.FileType('r'))
-#     args = argparser.parse_args()
+    argparser = argparse.ArgumentParser(
+        description="Exact matching in linear time")
+    argparser.add_argument("genome", type=argparse.FileType('r'))
+    argparser.add_argument("reads", type=argparse.FileType('r'))
+    args = argparser.parse_args()
 
-#    #translate files into dicts
-#     fasta_dict = fasta_func(args.genome)
-#     fastq_dict = fastq_func(args.reads)
+   #translate files into dicts
+    fasta_dict = fasta_func(args.genome)
+    fastq_dict = fastq_func(args.reads)
 
-#     print(search_array(fasta_dict, fastq_dict))
+    print(search_array(fasta_dict, fastq_dict))
 
-    print(search_array('abcdeabcdeabced','ab'))
 
 
 if __name__ == '__main__':
