@@ -21,7 +21,6 @@ def p_included(x, p, sa):
     m = len(p)
     
     while start!=end:
-        print('included_loop')
 
         mid = (start+end)//2
         suffix = x[sa[mid]:sa[mid]+m]
@@ -42,7 +41,6 @@ def lower_bound(p, x, sa, start, end):
     previous_suffix = x[sa[mid-1]:sa[mid-1]+m]
 
     while previous_suffix == p or suffix != p: 
-        print('lower_loop')
         
         if p <= previous_suffix:
             end = mid
@@ -63,7 +61,6 @@ def upper_bound(p, x, sa, start, end):
         return end+1
 
     while previous_suffix != p or suffix == p: 
-        print('upper_loop')
         
         if p < previous_suffix:
             end = mid
@@ -104,7 +101,7 @@ def array_runner(fasta_dict, fastq_dict):
 def main():
     
     argparser = argparse.ArgumentParser(
-        description="Exact matching in linear time")
+        description="Exact matching using a suffix array")
     argparser.add_argument("genome", type=argparse.FileType('r'))
     argparser.add_argument("reads", type=argparse.FileType('r'))
     args = argparser.parse_args()
@@ -113,7 +110,7 @@ def main():
     fasta_dict = fasta_func(args.genome)
     fastq_dict = fastq_func(args.reads)
 
-    print(search_array(fasta_dict, fastq_dict))
+    print(array_runner(fasta_dict, fastq_dict))
 
 
 
