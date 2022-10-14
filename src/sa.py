@@ -20,6 +20,10 @@ def p_included(x, p, sa):
     start, end = 0, len(sa)-1
     m = len(p)
     
+    suffix = x[sa[end]:sa[end]+m]
+    if suffix == p:
+        return True, end-1, end, end
+
     while start!=end:
 
         mid = (start+end)//2
@@ -111,6 +115,12 @@ def main():
     fastq_dict = fastq_func(args.reads)
 
     print(array_runner(fasta_dict, fastq_dict))
+
+    # chrom = 'acatattaggaggtaatcaaggcaatgcgcgatgaaaagatgagatgaccacggagtctcctggtgcttattctagaacaagcaagtacccggccgagtt'
+
+    # read = 'ttctagaaca'
+
+    # print(search_array(chrom, read))
 
 
 
