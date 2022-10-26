@@ -157,13 +157,13 @@ def main():
     fasta_dict = fasta_func(args.genome)
     fastq_dict = fastq_func(args.reads)
 
-    #print(array_runner(fasta_dict, fastq_dict))
+    print(array_runner(fasta_dict, fastq_dict))
 
-    chrom = 'acatattaggaggtaatcaaggcaatgcgcgatgaaaagatgagatgaccacggagtctcctggtgcttattctagaacaagcaagtacccggccgagtt'
+    # chrom = 'acatattaggaggtaatcaaggcaatgcgcgatgaaaagatgagatgaccacggagtctcctggtgcttattctagaacaagcaagtacccggccgagtt'
 
-    read = 'ttctagaaca'
+    # read = 'ttctagaaca'
 
-    print(search_array(chrom, read))
+    # print(search_array(chrom, read))
 
 
 
