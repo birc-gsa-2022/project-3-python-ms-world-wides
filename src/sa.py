@@ -115,13 +115,12 @@ def search_array_old(x, p):
     
     return occ
 
-
 def search_array(x, p):
-    start = 0
-    end = len(x)-1
     
     sa = construct_array(x)
     x += '$'
+    start = 0
+    end = len(x)
     occ = []
     if len(p)==0 or len(x)==1:
         return occ
@@ -153,15 +152,15 @@ def main():
     argparser.add_argument("reads", type=argparse.FileType('r'))
     args = argparser.parse_args()
 
-   #translate files into dicts
+    # translate files into dicts
     fasta_dict = fasta_func(args.genome)
     fastq_dict = fastq_func(args.reads)
 
     print(array_runner(fasta_dict, fastq_dict))
 
-    # chrom = 'acatattaggaggtaatcaaggcaatgcgcgatgaaaagatgagatgaccacggagtctcctggtgcttattctagaacaagcaagtacccggccgagtt'
+    # chrom = 'abba'
 
-    # read = 'ttctagaaca'
+    # read = 'bb'
 
     # print(search_array(chrom, read))
 
