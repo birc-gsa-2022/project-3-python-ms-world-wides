@@ -16,16 +16,22 @@ Once you have implemented the `sa` program (and tested it to the best of your ab
 # Report
 
 ## Algorithm
+We implemented the  suffix array construction algorithm by using the suffix tree from project 2 and then sorting the leaf in lexicographical order. After that we collect all the leaf-labels == suffix array. The running time of building the tree from project 2 is O(n²). Sorting the leafs costs O(n?) and reporting costs O(n?) ->
 
-*Which algorithm did you use to construct the suffix array. What is its running time?*
+The binary-search based exact pattern matching we implemented by two recursive functions (finding the upper and lower bound). These are called in a for loop over the letter indexes in p and return the start and end indexes used for the following letter in p. Since the sa-boundary for letter i+1 in p is nested in the sa-boundary for letter i, this for loop through p's letters narrows (or keeps constant) the boundary range in every loop until finally returning it for the entire pattern.
+It runs in O(m log n + z).
 
 ## Insights you may have had while implementing the algorithm
+Splicing and comparing entire strings is inefficient as compared to comparing letters recursively with the lower and upper bounds from the previous letter in p.
+
+The first search for lower and upper bounds is double work since it checks the entire range of sa.
 
 ## Problems encountered if any
+We used the upper bound as the end of sa rather than one outside, which caused issues for a while.
 
 ## Validation
 
-*How did you validate that the construct and the search algorithm works?*
+To check the correctness of the algorithm we compared the output of our match-algorithm with the output of the linear exact matching algorithm from project one. We used empty strings, uniform ones, random ones and part of existing DNA sequences to test our functions.
 
 ## Running time
 

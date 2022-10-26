@@ -11,9 +11,9 @@ def test_special():
     a1_fasta = fasta_func(random_sequence_generator(1, 0, 'fasta', 'a1_fasta', True))
     a1_fastq = fastq_func(random_sequence_generator(1, 0, 'fastq', 'a1_fastq', True))
     a10_fasta = fasta_func(random_sequence_generator(10, 0, 'fasta', 'a10_fasta', True))
-    # assert(sorted(array_runner(a10_fasta,a1_fastq))==sorted(lin_runner(a10_fasta,a1_fastq)))
+    assert(sorted(array_runner(a10_fasta,a1_fastq))==sorted(lin_runner(a10_fasta,a1_fastq)))
     assert(sorted(array_runner(a10_fasta,empty_fastq))==sorted(lin_runner(a10_fasta,empty_fastq)))
-    # assert(sorted(array_runner(a1_fasta,a1_fastq))==sorted(lin_runner(a1_fasta,a1_fastq)))
+    assert(sorted(array_runner(a1_fasta,a1_fastq))==sorted(lin_runner(a1_fasta,a1_fastq)))
     assert(sorted(array_runner(empty_fasta,empty_fastq))==sorted(lin_runner(empty_fasta,empty_fastq)))
     assert(sorted(array_runner(empty_fasta,a1_fastq))==sorted(lin_runner(empty_fasta,a1_fastq)))
 
