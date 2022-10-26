@@ -15,7 +15,6 @@ def construct_array(x):
     return list(L)
 
 
-
 def p_included(x, p, sa):
     start, end = 0, len(sa)-1
     m = len(p)
@@ -38,9 +37,35 @@ def p_included(x, p, sa):
 
     return False, -1, -1, -1
 
+def recursive_lower_bound(p, x, sa, start, end, i_letter):
+    # base case
+    if start == end:
+        return start
+    else:
+        mid = (end+start)//2
+        if p[i_letter] <= x[sa[mid]+i_letter]:
+            end = mid
+        else:
+            start = mid+1
+    
+    return recursive_lower_bound(p, x, sa, start, end, i_letter)
+
+def recursive_upper_bound(p, x, sa, start, end, i_letter):
+    # base case
+    if start == end:
+        return start
+    else:
+        mid = (end+start)//2
+        if p[i_letter] >= x[sa[mid]+i_letter]: # check only one letter
+            start = mid+1
+        else:
+            end = mid
+    
+    return recursive_upper_bound(p, x, sa, start, end, i_letter)
+
 def lower_bound(p, x, sa, start, end):
     m = len(p)
-    mid = end
+    mid = end # I think this doesn't make sense
     suffix = x[sa[mid]:sa[mid]+m]
     previous_suffix = x[sa[mid-1]:sa[mid-1]+m]
 
@@ -64,7 +89,7 @@ def upper_bound(p, x, sa, start, end):
     if suffix == p:
         return end+1
 
-    while previous_suffix != p or suffix == p: 
+    while previous_suffix != p or suffix == p:
         
         if p < previous_suffix:
             end = mid
@@ -75,7 +100,7 @@ def upper_bound(p, x, sa, start, end):
         previous_suffix = x[sa[mid-1]:sa[mid-1]+m]
     return mid
 
-def search_array(x, p):
+def search_array_old(x, p):
     sa = construct_array(x)
     x += '$'
     occ = []
@@ -87,6 +112,24 @@ def search_array(x, p):
         start = lower_bound(p, x, sa, start, mid)
         end = upper_bound(p, x, sa, mid, end)
         occ = [sa[i] for i in range(start, end)]
+    
+    return occ
+
+
+def search_array(x, p):
+    start = 0
+    end = len(x)-1
+    
+    sa = construct_array(x)
+    x += '$'
+    occ = []
+    if len(p)==0 or len(x)==1:
+        return occ
+
+    for i in range(len(p)):
+        start, end = recursive_lower_bound(p, x, sa, start, end, i), recursive_upper_bound(p, x, sa, start, end, i)
+
+    occ = [sa[i] for i in range(start, end)]
     
     return occ
 
@@ -114,13 +157,13 @@ def main():
     fasta_dict = fasta_func(args.genome)
     fastq_dict = fastq_func(args.reads)
 
-    print(array_runner(fasta_dict, fastq_dict))
+    #print(array_runner(fasta_dict, fastq_dict))
 
-    # chrom = 'acatattaggaggtaatcaaggcaatgcgcgatgaaaagatgagatgaccacggagtctcctggtgcttattctagaacaagcaagtacccggccgagtt'
+    chrom = 'acatattaggaggtaatcaaggcaatgcgcgatgaaaagatgagatgaccacggagtctcctggtgcttattctagaacaagcaagtacccggccgagtt'
 
-    # read = 'ttctagaaca'
+    read = 'ttctagaaca'
 
-    # print(search_array(chrom, read))
+    print(search_array(chrom, read))
 
 
 
