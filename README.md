@@ -34,5 +34,8 @@ We used the upper bound as the end of sa rather than one outside, which caused i
 To check the correctness of the algorithm we compared the output of our match-algorithm with the output of the linear exact matching algorithm from project one. We used empty strings, uniform ones, random ones and part of existing DNA sequences to test our functions.
 
 ## Running time
+To test the running time of the algorithm, we simulated DNA sequences with belonging patterns. The running time for the function, search_array, was recorded where the simulated DNA sequences and patterns where used as arguments. The sequence length times the pattern length was plotted against time. The figure is shown below.
 
-*List experiments and results that show that both the construction algorithm and the search algorithm works in the expected running time. Add figures by embedding them here, as you learned how to do in project 1.*
+![](time.png)
+
+From the figure the algorithm seems to run in O(m log n + z) time.
