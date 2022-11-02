@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from random import choice
 import random
 from sa import search_array
-import math
+
 
 
 def time_data(length):
@@ -21,7 +21,6 @@ def time_data(length):
     """    
     n = []
     t = []
-    y = []
     bases = ['a','t','g','c']
 
     for i in range(10, length):
@@ -37,7 +36,6 @@ def time_data(length):
        
         n.append(round(i/10) * i)
         t.append(total)
-        y.append(round(i/10) * math.log(i))
         time.sleep(0.05)
     
     return n,t
@@ -50,21 +48,8 @@ ax.scatter(n, t)
 ax.set_title('Time complexity')
 ax.set_ylabel('Time (s)')
 ax.set_xlabel('Length of sequence times pattern (n * m)')
-plt.savefig('time.png')
+plt.savefig('/home/mathilde/Documents/Kandidat/GSA/Project/Project3/project-3-python-ms-world-wides/figs/time.png')
 
 
-x = []
-y = []
-for i in range(10,1000):
-    x.append(i)
-    y.append(math.log(i))
-
-
-fig, ax = plt.subplots()
-ax.scatter(n, y)
-ax.set_title('Time complexity')
-ax.set_ylabel('Time (s)')
-ax.set_xlabel('Length of sequence times pattern (n * m)')
-plt.savefig('log.png')
 
     
