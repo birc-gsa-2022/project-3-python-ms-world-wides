@@ -36,6 +36,6 @@ To check the correctness of the algorithm we compared the output of our match-al
 ## Running time
 To test the running time of the algorithm, we simulated DNA sequences with belonging patterns. The running time for the function, search_array, was recorded where the simulated DNA sequences and patterns where used as arguments. The sequence length times the pattern length was plotted against time. The figure is shown below.
 
-![](time.png)
+![](/time.png)
 
 From the figure the algorithm seems to run in O(m log n + z) time.
