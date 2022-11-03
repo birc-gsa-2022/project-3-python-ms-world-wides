@@ -34,8 +34,11 @@ We used the upper bound as the end of sa rather than one outside, which caused i
 To check the correctness of the algorithm we compared the output of our match-algorithm with the output of the linear exact matching algorithm from project one. We used empty strings, uniform ones, random ones and part of existing DNA sequences to test our functions.
 
 ## Running time
-To test the running time of the algorithm, we simulated DNA sequences with belonging patterns. The running time for the function, search_array, was recorded where the simulated DNA sequences and patterns where used as arguments. The sequence length times the pattern length was plotted against time. The figure is shown below.
+To test the running time of the algorithm, we simulated random DNA sequences with belonging patterns. The running time was measured for building a suffix tree, sorting the tree, getting the suffix array and doing exact pattern matching. The running time was also measured for the final function consisting of all the steps. The result is shown in the figure below.
+![](figs/time_random.png)
 
-![](figs/time.png)
+We also tested the running time with single-symbol strings. The result is shown below:
 
-From the figure the algorithm seems to run in O(m log n + z) time.
+![](figs/time_worst_case.png)
+
+As known the naive approach to build a suffix tree performs very poorly on single-symbol strings but better on random DNA sequences. It is also what is seen here, and what takes the most time. For the single-symbol string, the graph for building a suffix tree seems to grow quadratic. This affect the result of the final function. However, when we use a random DNA sequence, the running time for building the suffix tree seems more linear, and hence, the final algortihmm seems to run in O(m log n + z) time.
