@@ -4,6 +4,7 @@ from random import choice
 import random
 from sa import *
 from tree import *
+import gc
 
 
 def search_array_2(x, p, SA):
@@ -48,6 +49,16 @@ def time_data1(length, bases):
         start = random.randint(0, i - round(i/10))
         pattern = sequence[start:(start + round(i/10))]
 
+        # Time for function doing everything
+        t0 = time.time()
+        search_array(sequence, pattern)
+        t1 = time.time()
+        total = t1 - t0
+
+        del sequence
+        gc.collect()
+        sequence = ''.join([choice(bases) for j in range(i)])
+
         # Time to construct suffix tree
         t0_construct_tree = time.time()
         T = construct_tree(sequence)
@@ -73,13 +84,6 @@ def time_data1(length, bases):
         t1_exact = time.time()
         total_exact = t1_exact - t0_exact
 
-        # Time for function doing everything
-        t0 = time.time()
-        search_array(sequence, pattern)
-        t1 = time.time()
-
-        total = t1 - t0
-        
         n.append(i)
         t_construct_tree.append(total_construct_tree)
         t_sort_tree.append(total_sort_tree)
@@ -90,6 +94,8 @@ def time_data1(length, bases):
         time.sleep(0.05)
     
     return n,t_construct_tree, t_sort_tree, t_construct_SA, t_exact, t_final
+
+
 
 bases = ['a','t','g','c']
 worst_case = ['a']
@@ -119,5 +125,3 @@ def plot_fig(n, t1, t2, t3, t4, t5, name, number):
     # Save figure in folder figs
     plt.savefig('/home/mathilde/Documents/Kandidat/GSA/Project/Project3/project-3-python-ms-world-wides/figs/{}.png'.format(name))
 
-plot_fig(n, t1, t2, t3, t4, t5, 'time_random', 1)
-plot_fig(n1, t11, t21, t31, t41, t51, 'time_worst_case', 2)
