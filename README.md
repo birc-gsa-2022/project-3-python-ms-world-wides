@@ -41,7 +41,7 @@ We also tested the running time with single-symbol strings. The result is shown 
 
 ![](figs/time_worst_case.png)
 
-Looking at the scale of the y-axis, we can see, that the running time is around 3 times worse on single-symbol strings for the final algorithm. Sorting the tree and doing the binary-search search doesn't seem to change whether we have random DNA sequences or single-symbol string. Here the running time seems to be linear, even though we expect to see a running time of O(m log n + z). To see a running time of O(m log n + z) would maybe require to run the experiment with longer sequences than done in this project.
+Looking at the scale of the y-axis, we can see, that the running time is around 3 times worse on single-symbol strings for the final algorithm. Sorting the tree and doing the binary-search search doesn't seem to change whether we have random DNA sequences or single-symbol string. Here the running time seems to be linear. We expect to see a running time of O(m log n + z) for binary-search. To see a running time of O(m log n + z) would maybe require to run the experiment with longer sequences than done in this project.
 
 As known the naive approach to build a suffix tree performs very poorly on single-symbol strings and gives us a running time that looks quadratic whereas it performs better on random DNA strings. Here the running time seems linear. 
 Getting the suffix array is also influenced by which strings we investigate. The running time looks quadratic on single-symbol strings and linear on random DNA sequences.
