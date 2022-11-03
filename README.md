@@ -16,7 +16,7 @@ Once you have implemented the `sa` program (and tested it to the best of your ab
 # Report
 
 ## Algorithm
-We implemented the  suffix array construction algorithm by using the suffix tree from project 2 and then sorting the leaf in lexicographical order. After that we collect all the leaf-labels == suffix array. The running time of building the tree from project 2 is O(n²). Sorting the leafs costs O(n) and reporting costs O(n) if the DNA sequence is random and quadratic if the sequence is a single-sybol string (see below). 
+We implemented the  suffix array construction algorithm by using the suffix tree from project 2 and then sorting the leaf in lexicographical order. After that we collect all the leaf-labels == suffix array. The running time of building the tree from project 2 is O(n²). Sorting the leafs costs O(n) and reporting costs O(n) if the DNA sequence is random and quadratic if the sequence is a single-sybom string (see below). 
 
 The binary-search based exact pattern matching we implemented by two recursive functions (finding the upper and lower bound). These are called in a for loop over the letter indexes in p and return the start and end indexes used for the following letter in p. Since the sa-boundary for letter i+1 in p is nested in the sa-boundary for letter i, this for loop through p's letters narrows (or keeps constant) the boundary range in every loop until finally returning it for the entire pattern.
 It runs in O(m log n + z).
